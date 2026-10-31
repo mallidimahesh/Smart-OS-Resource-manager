@@ -518,7 +518,7 @@ export const CPUSchedulingLab: React.FC = () => {
 
           <div className="flex items-end">
             <button
-              onClick={runSimulation}
+              onClick={() => runSimulation()}
               disabled={loading}
               className="w-full py-2 px-4 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition-all flex items-center justify-center gap-1.5"
             >

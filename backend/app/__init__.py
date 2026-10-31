@@ -43,4 +43,16 @@ def create_app(config_class=Config):
         from app.models import user, experiment
         db.create_all()
 
+        # Ensure demo user exists
+        try:
+            from app.models.user import User
+            student = User.query.filter_by(username="os_scholar").first()
+            if not student:
+                student = User(username="os_scholar", email="scholar@os-lab.edu", theme="dark")
+                student.set_password("os_scholar_2026")
+                db.session.add(student)
+                db.session.commit()
+        except Exception:
+            db.session.rollback()
+
     return app
